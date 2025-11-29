@@ -38,7 +38,11 @@ class LoanApplication(BaseModel):
     purpose: str
     verification_status: str
     application_type: str
-
+# Add a basic home page    
+@app.get("/")
+def home():
+    return {"message": "Loan Prediction API is Running!"}
+    
 # 4. The Prediction Endpoint
 @app.post("/predict")
 def predict_loan_approval(application: LoanApplication):
@@ -74,4 +78,5 @@ def predict_loan_approval(application: LoanApplication):
 
 # Entry point for local debugging
 if __name__ == "__main__":
+
     uvicorn.run(app, host="127.0.0.1", port=8000)
